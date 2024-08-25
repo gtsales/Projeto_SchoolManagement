@@ -15,14 +15,14 @@ import luiz.sales.school.model.dto.StudentDto;
 
 public interface StudentControllerApi {
 
+	@PostMapping("/register-student")
+	void registerStudent(@RequestBody StudentDto studentDto);
+	
 	@GetMapping("/find-student/{cpf}")
 	Optional<Student> getStudentByCpf(String cpf);
 	
 	@GetMapping("/find-student/all")
 	List<Student> getAllStudents();
-	
-	@PostMapping("/register-student")
-	void registerStudent(@RequestBody StudentDto studentDto);
 	
 	@DeleteMapping("/delete-student")
 	DeleteResponseDto deleteStudent(@RequestParam String Cpf);

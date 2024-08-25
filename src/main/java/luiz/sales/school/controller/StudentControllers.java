@@ -48,8 +48,6 @@ public class StudentControllers implements StudentControllerApi{
 
 	public DeleteResponseDto deleteStudent(@RequestParam String cpf) {
 		
-		studentRepository.deleteById(cpf);
-		
 		return studentService.deleteStudentService(cpf);
 	}
 }
