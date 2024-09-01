@@ -9,4 +9,9 @@ import luiz.sales.school.model.Student;
 @Repository
 public interface StudentRepository extends MongoRepository<Student, String> {
 
+	@Override
+	default void deleteById(String id) {
+		
+		
+	}
 }

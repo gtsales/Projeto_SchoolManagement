@@ -12,6 +12,7 @@ import luiz.sales.school.api.ClassControllerApi;
 import luiz.sales.school.model.Classes;
 import luiz.sales.school.model.dto.ClassesDto;
 import luiz.sales.school.repository.ClassesRepository;
+import luiz.sales.school.service.RegisterClass;
 
 @RestController
 @RequestMapping("/class")
@@ -20,14 +21,16 @@ public class ClassController implements ClassControllerApi{
 	@Autowired
 	private ClassesRepository classesRepository;
 	
-	public void registerClass(@RequestBody ClassesDto classDto) {
+	@Autowired
+	private RegisterClass registerClass;
+	
+	public void registerClass(@RequestBody ClassesDto classesDto) {
 		
-		Classes classes = classDto.convertToClasses(classDto);
-		classesRepository.save(classes);
+		registerClass.registerClasses(classesDto);
 	}
 	
-	public Optional<Classes> findClass(@RequestParam Long id) {
+	public Optional<Classes> findClass(@RequestParam String nome) {
 		
-		return classesRepository.findById(id);
+		return classesRepository.findById(nome);
 	}
 }
